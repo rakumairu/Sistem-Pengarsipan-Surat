@@ -2,7 +2,7 @@
 Initial Setup
 ###################
 Ubah konfigurasi :
-C:\xampp\apache\conf\extra\httpd-vhost.conf
+C:\\xampp\apache\conf\extra\httpd-vhost.conf
 <VirtualHost *:80>
 	DocumentRoot "D:htdocs/surat"
 	ServerName surat.localhost
