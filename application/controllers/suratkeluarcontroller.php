@@ -280,6 +280,7 @@ class SuratKeluarController extends CI_Controller{
 
     // FIXME: kemungkinan error karena jika di tambah 1 hari maka bisa jamnya ga pas
     // Modifying the till date by 1 day to achieve the right download time
+    // FIXME: kayanya sihh ga error harusnya
     $till->modify('+1 day');
 
     /**
