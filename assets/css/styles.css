@@ -1,0 +1,179 @@
+/* Untuk template */
+html, body {
+  height: 100%;
+  margin 0;
+  overflow: hidden;
+}
+div.inline {
+  float: left;
+}
+p.text-muted {
+  margin-bottom: 0;
+}
+.viewport {
+  height: 100%
+}
+body {
+  background: #f4f4f4;
+  font-family: 'Fira Sans', sans-serif;
+  color: #FDFFFF;
+}
+#account {
+  margin-top: 12px;
+  margin-bottom: 6px;
+  background-color: #253A47;
+  color: #AFC7D5;
+  border-color: #21333E;
+  border-top-style: none;
+  border-bottom-width: thin;
+  border-bottom-style: solid;
+}
+#main {
+  margin-top: 12px;
+}
+#sidebar {
+  padding-right: 0;
+  padding-left: 0;
+  background-color: #253A47;
+  height: 100%;
+}
+#sidebar a {
+  border-radius: 0;
+}
+#content {
+  padding-right: 0;
+  padding-left: 0;
+  background-color: #314D5B;
+  height: 100%;
+}
+#data {
+  background-color: #eeeeee;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 30px;
+  margin-bottom: auto;
+  overflow: auto;
+}
+h5 {
+  margin-bottom: 0;
+}
+#brand-bar {
+  background-color: #21333E;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #CBCBCB;
+}
+#title-bar {
+  background-color: #349886;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#title-bar h5 {
+  margin-left: 36px;
+  display: inline;
+}
+#title-bar button {
+  background-color: #41BEA8;
+  color: #f4f4f4;
+  margin-right: 32px;
+}
+#data-masuk {
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.navigation {
+  margin: 12px;
+}
+.list-group-item {
+  background-color: #253A47;
+  color: #AFC7D5;
+  border-color: #253A47;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  margin-left: 12px;
+}
+.list-group-item:hover {
+  color: #EAF7FD;
+  background-color: #314D5B;
+  border-color: #314D5B;
+  border-style: solid;
+}
+.list-group-item.active {
+  background-color: #314D5B;
+  border-color: #314D5B;
+  color: #EAF7FD;
+}
+.list-group-item:first-child {
+  border-radius: 0;
+}
+.breadcrumb {
+  background: #cccccc;
+  color: #333333;
+  padding-bottom: 4px;
+  padding-top: 4px;
+  margin-top: 12px;
+}
+.breadcrumb a {
+  color: #333333;
+}
+.body-flashdata {
+  background: #f4f4f4;
+  padding-top: 20px;
+  font-size: 14px;
+  color: #444444;
+}
+.navbar-nav > li > a {
+  padding-top: 6px !important;
+  padding-bottom: 0 !important;
+  height: 33px;
+}
+/* Untuk login */
+.body {
+  background: #f4f4f4;
+  padding-top: 80px;
+  font-size: 14px;
+  color: #444444;
+}
+.navbar {
+  min-height: 33px !important;
+  margin-bottom: 0;
+  border-radius: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+/* Untuk modal */
+#modalTitleTambahSuratMasuk {
+  color: grey;
+}
+#modalTitleEditSuratMasuk {
+  color: grey;
+}
+h2 {
+  color: grey;
+}
+label {
+  color: grey;
+}
+.table {
+  color: grey;
+}
+.table thead th {
+  border-color: #bdbdbd;
+}
+.table th {
+  border-color: #bdbdbd;
+}
+.table td {
+  border-color: #bdbdbd;
+}
+#table-data {
+  margin-top: 6px;
+}
+.hidden {
+  display: none;
+}

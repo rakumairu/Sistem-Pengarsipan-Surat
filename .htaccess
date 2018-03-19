@@ -1,0 +1,16 @@
+#REWRITE index.php
+#By Gunoob.com
+#It's easy way to rewrite index.php without more configuration.
+#It's very simply, right?
+
+#START USING REWRITE ENGINE
+RewriteEngine On
+
+#REWRITE CONDITON
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#WHEN YOU FOUND index.php IT WILL REWRITE To / AUTOMATICALLY
+RewriteRule .* index.php/$0 [PT,L]
+
+#THANK FOR DO NOT REMOVE OUR NAME :-)
