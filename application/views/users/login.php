@@ -64,11 +64,27 @@
             <?php // Login form ?>
             <?php echo form_open('login'); ?>
               <div class="form-group">
-                <input class="form-control" placeholder="Nama pengguna" name="username" type="text" autofocus="">
+                <input class="form-control <?php
+                if (form_error('username','','')) {
+                  echo 'is-invalid';
+                }
+                ?>" placeholder="Nama pengguna" name="username" type="text" autofocus="" value="<?php
+                if (isset($_POST['username'])) {
+                  echo $_POST['username'];
+                }
+                ?>">
                 <?php echo form_error('username','<p class="small text-danger" role="alert">','</p>'); ?>
               </div>
               <div class="form-group">
-                <input class="form-control" placeholder="Kata sandi" name="password" type="password">
+                <input class="form-control <?php
+                if (form_error('password','','')) {
+                  echo 'is-invalid';
+                }
+                ?>" placeholder="Kata sandi" name="password" type="password" value="<?php
+                if (isset($_POST['password'])) {
+                  echo $_POST['password'];
+                }
+                ?>">
                 <?php echo form_error('password','<p class="small text-danger" role="alert">','</p>'); ?>
               </div>
               <button class="btn btn-primary btn-block" type="submit">Masuk</button>

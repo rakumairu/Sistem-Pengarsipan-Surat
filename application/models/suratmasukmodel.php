@@ -129,7 +129,8 @@ class SuratMasukModel extends CI_Model{
       $this->detail_disposisi = $this->input->post('detail_disposisi');
       $this->dokumen = $this->input->post('dokumen');
     }
-    $this->db->where('id', $id_new);
+    
+    $this->db->where('id', $this->id);
     if ($this->db->update('surat_masuk', $this)) {
       return TRUE;
     } else {

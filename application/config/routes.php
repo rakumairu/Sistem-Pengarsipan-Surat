@@ -19,6 +19,9 @@ $route['dashboard'] = 'dashboardcontroller';
 
 $route['login'] = 'users/login';
 $route['logout'] = 'users/logout';
+$route['user'] = 'users';
+$route['user/edit'] = 'users/editData';
+$route['user/password'] = 'users/changePassword';
 
 $route['default_controller'] = 'users/login';
 $route['404_override'] = '';

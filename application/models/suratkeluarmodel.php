@@ -106,7 +106,7 @@ class SuratKeluarModel extends CI_Model{
       $this->dokumen = $this->input->post('dokumen');
     }
 
-    $this->db->where('id', $id_new);
+    $this->db->where('id', $this->id);
     if ($this->db->update('surat_keluar', $this)) {
       return TRUE;
     } else {

@@ -26,17 +26,35 @@
       <div class="list-group-item" id="title">
         <h5 class="text-center">Arsip Surat</h5>
       </div>
-      <div class="list-group-item" id="account">
-        <div style="display:inline-block" class="align-top"><span class="fas fa-user"></span>&nbsp;&nbsp;&nbsp;</div>
-        <div style="display:inline-block"><p class="text-muted">Selamat datang,</p> <?php echo $this->session->userdata('username'); ?></div>
-      </div>
+      <a href="<?php echo base_url(); ?>user">
+        <div class="list-group-item" id="account">
+          <div style="display:inline-block" class="align-top"><span class="fas fa-user"></span>&nbsp;&nbsp;&nbsp;</div>
+          <div style="display:inline-block"><p class="text-muted">Selamat datang,</p> <?php echo $this->session->userdata('display_name'); ?></div>
+        </div>
+      </a>
       <?php //Petugas part ?>
       <?php if($this->session->userdata('level') == 1): ?>
-        <a href="<?php echo base_url(); ?>suratmasuk" class="list-group-item <?php if ($menu == 'surat_masuk') {echo 'active';} ?>"><span class="fas fa-cloud-download-alt"></span>&nbsp;&nbsp;&nbsp;Surat Masuk</a>
-        <a href="<?php echo base_url(); ?>suratkeluar" class="list-group-item <?php if ($menu == 'surat_keluar') {echo 'active';} ?>"><span class="fas fa-cloud-upload-alt"></span>&nbsp;&nbsp;&nbsp;Surat Keluar</a>
+        <a href="<?php echo base_url(); ?>suratmasuk" class="list-group-item <?php
+          if(isset($menu))
+          {
+            if ($menu == 'surat_masuk') {echo 'active';}
+          }
+          ?>"><span class="fas fa-cloud-download-alt"></span>&nbsp;&nbsp;&nbsp;Surat Masuk</a>
+        <a href="<?php echo base_url(); ?>suratkeluar" class="list-group-item
+          <?php
+          if(isset($menu))
+          {
+            if ($menu == 'surat_keluar') {echo 'active';}
+          }
+          ?>"><span class="fas fa-cloud-upload-alt"></span>&nbsp;&nbsp;&nbsp;Surat Keluar</a>
       <?php // Kepdin Part ?>
       <?php elseif($this->session->userdata('level') == 2): ?>
-        <a href="<?php echo base_url(); ?>suratmasuk" class="list-group-item <?php if ($menu == 'surat_masuk') {echo 'active';} ?>"><span class="fas fa-cloud-download-alt"></span>&nbsp;&nbsp;&nbsp;Surat Masuk</a>
+        <a href="<?php echo base_url(); ?>suratmasuk" class="list-group-item <?php
+        if(isset($menu))
+        {
+          if ($menu == 'surat_masuk') {echo 'active';}
+        }
+        ?>"><span class="fas fa-cloud-download-alt"></span>&nbsp;&nbsp;&nbsp;Surat Masuk</a>
       <?php endif; ?>
       <a href="<?php echo base_url(); ?>logout" class="list-group-item"><span class="fas fa-sign-out-alt"></span>&nbsp;&nbsp;&nbsp;Keluar</a>
     </div>
@@ -52,7 +70,12 @@
         <span></span>
         <span></span>
       </div>
-      <h5 class="text-left" style="display:inline"><?= $icon;  ?>&nbsp;&nbsp;&nbsp;<?= $title; ?></h5>
+      <h5 class="text-left" style="display:inline"><?php
+      if(isset($icon))
+      {
+        echo $icon;
+      }
+      ?>&nbsp;&nbsp;&nbsp;<?= $title; ?></h5>
     </div>
 
     <div id="content-utama">
