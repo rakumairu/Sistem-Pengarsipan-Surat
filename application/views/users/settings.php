@@ -1,9 +1,9 @@
 <?php // IDEA: di bikin pake AJAX ?>
-<a class="btn btn-primary" href="<?php echo base_url(); ?>user">Ubah Data</a>
-<a class="btn btn-primary" href="<?php echo base_url(); ?>user">Ubah Kata Sandi</a>
+<!-- <a class="btn btn-primary" href="<?php echo base_url(); ?>user">Ubah Data</a> -->
+<!-- <a class="btn btn-primary" href="<?php echo base_url(); ?>user">Ubah Kata Sandi</a> -->
 
 <h3>Ubah Data</h3>
-<?php echo form_open('user'); ?>
+<?php echo form_open('settings'); ?>
 <div class="form-group">
   <label>Nama Pengguna</label>
   <input class="form-control <?php
@@ -48,7 +48,7 @@
 <hr>
 
 <h3>Ubah Kata Sandi</h3>
-<?php echo form_open_multipart('user'); ?>
+<?php echo form_open_multipart('settings'); ?>
 <div class="form-group">
   <label>Kata Sandi Lama</label>
   <input class="form-control <?php

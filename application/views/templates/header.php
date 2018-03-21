@@ -26,12 +26,21 @@
       <div class="list-group-item" id="title">
         <h5 class="text-center">Arsip Surat</h5>
       </div>
-      <a href="<?php echo base_url(); ?>user">
+      <a href="<?php echo base_url(); ?>settings">
         <div class="list-group-item" id="account">
           <div style="display:inline-block" class="align-top"><span class="fas fa-user"></span>&nbsp;&nbsp;&nbsp;</div>
           <div style="display:inline-block"><p class="text-muted">Selamat datang,</p> <?php echo $this->session->userdata('display_name'); ?></div>
         </div>
       </a>
+      <?php //Admin Part ?>
+      <?php if($this->session->userdata('level') == 3): ?>
+        <a href="<?php echo base_url(); ?>users" class="list-group-item <?php
+          if(isset($menu))
+          {
+            if ($menu == 'users') {echo 'active';}
+          }
+          ?>"><span class="fas fa-user"></span>&nbsp;&nbsp;&nbsp;Pengguna</a>
+      <?php endif; ?>
       <?php //Petugas part ?>
       <?php if($this->session->userdata('level') == 1): ?>
         <a href="<?php echo base_url(); ?>suratmasuk" class="list-group-item <?php

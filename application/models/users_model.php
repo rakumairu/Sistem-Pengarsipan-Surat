@@ -27,8 +27,11 @@ class Users_model extends CI_Model{
     parent::__construct();
   }
 
-  public function get($username)
+  public function get($username = FALSE)
   {
+    if ($username == FALSE) {
+      return $this->db->get('users')->result_array();
+    }
     return $this->db->get_where('users', array('username' => $username))->row_array();
   }
 
@@ -50,6 +53,29 @@ class Users_model extends CI_Model{
     } else {
       return FALSE;
     }
+  }
+
+  public function insert()
+  {
+    $this->username = $this->input->post('username');
+    $this->password = md5($this->input->post('password'));
+    $this->level = $this->input->post('level');
+    $this->display_name = $this->input->post('display_name');
+    $this->email = $this->input->post('email');
+
+    if ($this->db->insert('users',$this)) {
+      return TRUE;
+    }
+    return FALSE;
+  }
+
+  public function delete($username)
+  {
+    $this->db->where('username',$username);
+    if ($this->db->delete('users')) {
+      return TRUE;
+    }
+    return FALSE;
   }
 
   /**

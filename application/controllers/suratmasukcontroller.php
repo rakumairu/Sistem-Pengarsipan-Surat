@@ -21,6 +21,10 @@ class SuratMasukController extends CI_Controller{
    */
   function index()
   {
+    if ($this->session->userdata('level') == 3) {
+      $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
+      redirect('users');
+    }
     // Data that will passed to the view
     $data['title'] = 'Surat Masuk';
     $data['icon'] = '<span class="fas fa-cloud-download-alt"></span>';
@@ -58,6 +62,9 @@ class SuratMasukController extends CI_Controller{
     if ($this->session->userdata('level') == 2) {
       $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
       redirect('suratmasuk');
+    } elseif ($this->session->userdata('level') == 3) {
+      $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
+      redirect('users');
     }
 
     // Data that will be pased to the view
@@ -151,6 +158,9 @@ class SuratMasukController extends CI_Controller{
     if ($this->session->userdata('level') == 2) {
       $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
       redirect('suratmasuk');
+    } elseif ($this->session->userdata('level') == 3) {
+      $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
+      redirect('users');
     }
 
     // Data that will be pased to the view
@@ -248,6 +258,9 @@ class SuratMasukController extends CI_Controller{
     if ($this->session->userdata('level') == 1) {
       $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
       redirect('suratmasuk');
+    } elseif ($this->session->userdata('level') == 3) {
+      $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
+      redirect('users');
     }
 
     // Do update on the status of suratmasuk
@@ -267,6 +280,11 @@ class SuratMasukController extends CI_Controller{
    */
   public function detaildisposisi($id)
   {
+    if ($this->session->userdata('level') == 3) {
+      $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
+      redirect('users');
+    }
+
     // Fetching the data
     $data['surat_masuk'] = $this->SuratMasukModel->get($id);
 
@@ -301,6 +319,9 @@ class SuratMasukController extends CI_Controller{
     if ($this->session->userdata('level') == 2) {
       $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
       redirect('suratmasuk');
+    } elseif ($this->session->userdata('level') == 3) {
+      $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
+      redirect('users');
     }
 
     /** @var String the name of the file that will be deleted */
@@ -338,6 +359,9 @@ class SuratMasukController extends CI_Controller{
     if ($this->session->userdata('level') == 2) {
       $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
       redirect('suratmasuk');
+    } elseif ($this->session->userdata('level') == 3) {
+      $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
+      redirect('users');
     }
 
     /**
@@ -364,7 +388,6 @@ class SuratMasukController extends CI_Controller{
       $till = new DateTime();
     }
 
-    // FIXME: kemungkinan error karena jika di tambah 1 hari maka bisa jamnya ga pas
     // Modifying the till date by 1 day to achieve the right download time
     $till->modify('+1 day');
 
