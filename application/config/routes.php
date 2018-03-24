@@ -17,8 +17,10 @@ $route['suratmasuk'] = 'suratmasukcontroller';
 $route['suratkeluar'] = 'suratkeluarcontroller';
 $route['dashboard'] = 'dashboardcontroller';
 
+$route['forgot'] = 'users/forgot';
 $route['login'] = 'users/login';
 $route['logout'] = 'users/logout';
+$route['reset/(:any)'] = 'users/reset/$1';
 $route['settings'] = 'users/userSetting';
 $route['users/create'] = 'users/create';
 $route['users/delete/(:any)'] = 'users/delete/$1';

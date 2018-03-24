@@ -7,7 +7,7 @@
     <meta name="linked-in:" content="https://www.linkedin.com/in/demaspira-aulia-0a943111b/">
     <meta name="github:" content="https://github.com/noobDedem">
 
-    <title>Masuk</title>
+    <title>Lupa Kata Sandi</title>
 
     <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/icons/icon.ico">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
@@ -45,27 +45,27 @@
       ?>
     <?php endif; ?>
 
-    <?php // Form error ?>
-    <?php if (form_error('username','','') && form_error('password','','')): ?>
+    <?php // form error ?>
+    <?php if (form_error('password_conf','','') && form_error('password','','')): ?>
       <?php echo
         '<div class="modal fade" id="failed" tabindex="-1" role="dialog" aria-labelledby="modalFailedLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content" style="background-color:#f8d7da">
               <div class="modal-body" style="padding:0">
-              '.form_error('username','<p class="text-danger text-center" style = "margin-top:16px">','</p>').form_error('password','<p class="text-danger text-center" style = "">','</p>').'
+              '.form_error('password','<p class="text-danger text-center" style = "margin-top:16px">','</p>').form_error('password_conf','<p class="text-danger text-center" style = "">','</p>').'
               </div>
             </div>
           </div>
         </div>'
       ?>
     <?php endif; ?>
-    <?php if (form_error('username','','')): ?>
+    <?php if (form_error('password_conf','','')): ?>
       <?php echo
         '<div class="modal fade" id="failed" tabindex="-1" role="dialog" aria-labelledby="modalFailedLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content" style="background-color:#f8d7da">
               <div class="modal-body" style="padding:0">
-                '.form_error('username','<p class="text-danger text-center" style = "margin-top:16px">','</p>').'
+                '.form_error('password_conf','<p class="text-danger text-center" style = "margin-top:16px">','</p>').'
               </div>
             </div>
           </div>
@@ -88,18 +88,8 @@
     <div class="row">
       <div class="col-md-4">
         <div id="container">
-          <?php echo form_open('login'); ?>
-          <div class="form-group">
-            <input class="form-control <?php
-            if (form_error('username','','')) {
-              echo 'is-invalid';
-            }
-            ?>" type="text" name="username" value="<?php
-            if (isset($_POST['username'])) {
-              echo $_POST['username'];
-            }
-            ?>" placeholder="Username">
-          </div>
+          <p>Silahkan tuliskan kata sandi baru anda</p>
+          <?php echo form_open('reset/'.$reset_token); ?>
           <div class="form-group">
             <input class="form-control <?php
             if (form_error('password','','')) {
@@ -109,13 +99,21 @@
             if (isset($_POST['password'])) {
               echo $_POST['password'];
             }
-            ?>" placeholder="Kata Sandi">
+            ?>" placeholder="Kata sandi baru">
           </div>
-          <button class="btn btn-outline-primary btn-block" type="submit" name="button">Masuk</button>
+          <div class="form-group">
+            <input class="form-control <?php
+            if (form_error('password_conf','','')) {
+              echo 'is-invalid';
+            }
+            ?>" type="password" name="password_conf" value="<?php
+            if (isset($_POST['password_conf'])) {
+              echo $_POST['password_conf'];
+            }
+            ?>" placeholder="Konfirmasi kata sandi baru">
+          </div>
+          <button class="btn btn-outline-primary btn-block" type="submit" name="button">Kirim</button>
           <?php echo form_close(); ?>
-          <div class="text-center">
-            <a href="<?php echo base_url(); ?>forgot">Lupa kata sandi?</a>
-          </div>
         </div>
       </div>
     </div>
