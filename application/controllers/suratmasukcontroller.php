@@ -95,7 +95,7 @@ class SuratMasukController extends CI_Controller{
     } else {
       // Configuration for the file upload
       $config['upload_path'] = './assets/upload';
-      $config['allowed_types'] = 'gif|jpg|png|doc|pdf|docx|jpeg';
+      $config['allowed_types'] = 'gif|jpg|png|doc|pdf|docx';
       $config['max_size'] = 2048000;
       $config['max_width'] = 4000;
       $config['max_height'] = 5000;
@@ -104,13 +104,14 @@ class SuratMasukController extends CI_Controller{
       $this->load->library('upload', $config);
 
       // Renaming the file name with nomor_surat-date.ext
-      $_FILES['dokumen']['name'] = preg_replace('/\s/', '', $this->input->post('nomor_surat'))."-".$this->input->post('tanggal_undangan').".".pathinfo($_FILES['dokumen']['name'], PATHINFO_EXTENSION);
+      $name = preg_replace('/\s/', '', $this->input->post('nomor_surat'))."-".$this->input->post('tanggal_undangan').".".pathinfo($_FILES['dokumen']['name'], PATHINFO_EXTENSION);
+      $_FILES['dokumen']['name'] = preg_replace('/\/', '_', $name);
 
       /**
        * Checking wether or not the upload is running
        * @var boolean
        */
-      if (!$this->upload->do_upload('dokumen')) {
+      if ($this->upload->do_upload('dokumen')) {
         // Uploading the file
         $data = array('dokumen' => $this->upload->data());
         $this->upload->data();

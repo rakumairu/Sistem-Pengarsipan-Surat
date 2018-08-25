@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$config['base_url'] = 'http://surat.localhost/';
+$config['base_url'] = 'http://miyuki-chan/surat/';
 
 $config['index_page'] = '';
 
