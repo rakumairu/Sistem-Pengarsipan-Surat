@@ -15,10 +15,15 @@ class SuratKeluarController extends CI_Controller{
     }
 
     // Checking if the user is 'KepDin' then redirect it to 'suratmasuk'
-    if ($this->session->userdata('level') == 2) {
-      $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
-      redirect('suratmasuk');
-    } elseif ($this->session->userdata('level') == 3) {
+    // if ($this->session->userdata('level') == 2) {
+    //   $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
+    //   redirect('suratmasuk');
+    // } elseif ($this->session->userdata('level') == 3) {
+    //   $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
+    //   redirect('users');
+    // }
+
+    if ($this->session->userdata('level') == 3) {
       $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
       redirect('users');
     }
@@ -39,10 +44,18 @@ class SuratKeluarController extends CI_Controller{
     // Fetching the data from database
     $data['surat_keluar'] = $this->SuratKeluarModel->get();
 
-    // Loading the view
-    $this->load->view('templates/header', $data);
-    $this->load->view('suratkeluar/index', $data);
-    $this->load->view('templates/footer');
+    // Loading the view for Kepala Dinas
+    if ($this->session->userdata('level') == 2) {
+      $this->load->view('templates/header', $data);
+      $this->load->view('kepdin/indexSuratKeluar', $data);
+      $this->load->view('templates/footer');
+    } else {
+      // Loading the view for Petugas
+      $this->load->view('templates/header', $data);
+      $this->load->view('suratkeluar/index', $data);
+      $this->load->view('templates/footer');
+    }
+
   }
 
   /**
@@ -51,6 +64,10 @@ class SuratKeluarController extends CI_Controller{
    */
   public function create()
   {
+    if ($this->session->userdata('level') == 2) {
+      $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
+      redirect('suratmasuk');
+    }
     // Data that will be pased to the view
     $data['title'] = 'Tambah Surat Keluar';
     $data['icon'] = '<span class="fas fa-cloud-upload-alt"></span>';
@@ -138,6 +155,11 @@ class SuratKeluarController extends CI_Controller{
    */
   public function edit($id)
   {
+    if ($this->session->userdata('level') == 2) {
+      $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
+      redirect('suratmasuk');
+    }
+
     // Data that will be pased to the view
     $data['title'] = 'Edit Surat Keluar';
     $data['icon'] = '<span class="fas fa-cloud-upload-alt"></span>';
@@ -227,6 +249,11 @@ class SuratKeluarController extends CI_Controller{
    */
   public function delete($id)
   {
+    if ($this->session->userdata('level') == 2) {
+      $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
+      redirect('suratmasuk');
+    }
+
     /** @var String the name of the file that will be deleted */
     $file_name = $this->SuratKeluarModel->get($id)['dokumen'];
 

@@ -61,6 +61,13 @@
           if ($menu == 'surat_masuk') {echo 'active';}
         }
         ?>"><span class="fas fa-cloud-download-alt"></span>&nbsp;&nbsp;&nbsp;Surat Masuk</a>
+        <a href="<?php echo base_url(); ?>suratkeluar" class="list-group-item
+          <?php
+          if(isset($menu))
+          {
+            if ($menu == 'surat_keluar') {echo 'active';}
+          }
+          ?>"><span class="fas fa-cloud-upload-alt"></span>&nbsp;&nbsp;&nbsp;Surat Keluar</a>
       <?php endif; ?>
       <a href="<?php echo base_url(); ?>logout" class="list-group-item"><span class="fas fa-sign-out-alt"></span>&nbsp;&nbsp;&nbsp;Keluar</a>
     </div>

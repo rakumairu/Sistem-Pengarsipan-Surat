@@ -104,8 +104,9 @@ class SuratMasukController extends CI_Controller{
       $this->load->library('upload', $config);
 
       // Renaming the file name with nomor_surat-date.ext
-      $name = preg_replace('/\s/', '', $this->input->post('nomor_surat'))."-".$this->input->post('tanggal_undangan').".".pathinfo($_FILES['dokumen']['name'], PATHINFO_EXTENSION);
-      $_FILES['dokumen']['name'] = preg_replace('/\/', '_', $name);
+      // $name = preg_replace('/\s/', '', $this->input->post('nomor_surat'))."-".$this->input->post('tanggal_undangan').".".pathinfo($_FILES['dokumen']['name'], PATHINFO_EXTENSION);
+      // $_FILES['dokumen']['name'] = preg_replace('/\/', '_', $name);
+      $_FILES['dokumen']['name'] = preg_replace('/\s/', '', $this->input->post('nomor_surat'))."-".$this->input->post('tanggal_undangan').".".pathinfo($_FILES['dokumen']['name'], PATHINFO_EXTENSION);
 
       /**
        * Checking wether or not the upload is running

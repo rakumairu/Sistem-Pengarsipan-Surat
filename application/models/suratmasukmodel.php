@@ -39,6 +39,8 @@ class SuratMasukModel extends CI_Model{
   /** @var DateTime the time and date when the data is created */
   var $tanggal_data;
 
+  var $users_username;
+
   public function __construct()
   {
     parent::__construct();
@@ -88,6 +90,7 @@ class SuratMasukModel extends CI_Model{
     $this->dokumen = $dokumen;
     $this->status = 1;
     $this->detail_disposisi = '';
+    $this->users_username = $this->input->post('username');
 
     if ($this->db->insert('surat_masuk', $this)) {
       return TRUE;
@@ -116,6 +119,7 @@ class SuratMasukModel extends CI_Model{
       $this->tanggal_data = $this->input->post('tanggal_data');
       $this->status = $this->input->post('status');
       $this->detail_disposisi = $this->input->post('detail_disposisi');
+      $this->users_username = $this->input->post('username');
     } else {
       $this->id = $id_new;
       $this->nomor_surat = preg_replace('/\s/', '', $this->input->post('nomor_surat'));
@@ -128,8 +132,9 @@ class SuratMasukModel extends CI_Model{
       $this->status = $this->input->post('status');
       $this->detail_disposisi = $this->input->post('detail_disposisi');
       $this->dokumen = $this->input->post('dokumen');
+      $this->users_username = $this->input->post('username');
     }
-    
+
     $this->db->where('id', $this->id);
     if ($this->db->update('surat_masuk', $this)) {
       return TRUE;

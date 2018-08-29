@@ -88,5 +88,6 @@
   </div>
   <input type="hidden" name="dokumen" value="<?php echo $surat_keluar['dokumen']; ?>">
   <input type="hidden" name="tanggal_data" value="<?php echo $surat_keluar['tanggal_data']; ?>">
+  <input type="hidden" id="username" name="username" value="<?php echo $this->session->userdata('username');?>">
   <button type="submit" name="button" class="btn btn-primary">Simpan</button>
   <?php echo form_close(); ?>

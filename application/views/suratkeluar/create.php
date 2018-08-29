@@ -73,5 +73,6 @@
       <?php echo $this->session->flashdata('upload_error'); ?>
     <?php endif; ?>
   </div>
+  <input type="hidden" id="username" name="username" value="<?php echo $this->session->userdata('username');?>">
   <button type="submit" name="button" class="btn btn-primary">Simpan</button>
   <?php echo form_close(); ?>

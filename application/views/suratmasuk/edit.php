@@ -131,5 +131,6 @@
   <input type="hidden" name="tanggal_data" value="<?php echo $surat_masuk['tanggal_data']; ?>">
   <input type="hidden" name="status" value="<?php echo $surat_masuk['status']; ?>">
   <input type="hidden" name="detail_disposisi" value="<?php echo $surat_masuk['detail_disposisi']; ?>">
+  <input type="hidden" id="username" name="username" value="<?php echo $this->session->userdata('username');?>">
   <button type="submit" name="button" class="btn btn-primary">Simpan</button>
   <?php echo form_close(); ?>

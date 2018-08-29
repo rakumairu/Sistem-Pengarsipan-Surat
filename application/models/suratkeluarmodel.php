@@ -27,6 +27,8 @@ class SuratKeluarModel extends CI_Model{
   /** @var DateTime the time and date when the data is created */
   var $tanggal_data;
 
+  var $users_username;
+
   public function __construct()
   {
     parent::__construct();
@@ -72,6 +74,7 @@ class SuratKeluarModel extends CI_Model{
     $this->perihal = $this->input->post('perihal');
     $this->bidang = $this->input->post('bidang');
     $this->dokumen = $dokumen;
+    $this->users_username = $this->input->post('username');
 
     if ($this->db->insert('surat_keluar', $this)) {
       return TRUE;
@@ -96,6 +99,7 @@ class SuratKeluarModel extends CI_Model{
       $this->bidang = $this->input->post('bidang');
       $this->dokumen = $dokumen_new;
       $this->tanggal_data = $this->input->post('tanggal_data');
+      $this->users_username = $this->input->post('username');
     } else {
       $this->id = $id_new;
       $this->nomor_surat = preg_replace('/\s/', '', $this->input->post('nomor_surat'));
@@ -104,6 +108,7 @@ class SuratKeluarModel extends CI_Model{
       $this->bidang = $this->input->post('bidang');
       $this->tanggal_data = $this->input->post('tanggal_data');
       $this->dokumen = $this->input->post('dokumen');
+      $this->users_username = $this->input->post('username');
     }
 
     $this->db->where('id', $this->id);
