@@ -54,7 +54,10 @@ class SuratMasukModel extends CI_Model{
   public function get($id = FALSE)
   {
     if ($id == FALSE) {
-      $query = $this->db->get('surat_masuk');
+      $this->db->select('*');
+      $this->db->from('surat_masuk');
+      $this->db->join('users', 'users.username = surat_masuk.users_username');
+      $query = $this->db->get();
       return $query->result_array();
     } else {
       $query = $this->db->get_where('surat_masuk', array('id' => $id));

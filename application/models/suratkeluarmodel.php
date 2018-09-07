@@ -42,7 +42,10 @@ class SuratKeluarModel extends CI_Model{
   public function get($id = FALSE)
   {
     if ($id == FALSE) {
-      $query = $this->db->get('surat_keluar');
+      $this->db->select('*');
+      $this->db->from('surat_keluar');
+      $this->db->join('users', 'users.username = surat_keluar.users_username');
+      $query = $this->db->get();
       return $query->result_array();
     } else {
       $query = $this->db->get_where('surat_keluar', array('id' => $id));

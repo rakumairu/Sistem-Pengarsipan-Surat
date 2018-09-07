@@ -20,6 +20,7 @@
         <th class="align-middle" scope="col">Detail</th>
         <th class="align-middle" scope="col">File</th>
         <th class="align-middle" scope="col">Disposisi</th>
+        <th class="align-middle" scope="col">Petugas</th>
       </tr>
     </thead>
     <?php $no = 1; ?>
@@ -157,6 +158,7 @@
                 </div>
               </div>
             </td>
+            <td><?php echo $surat['display_name']; ?></td>
           </tr>
         <?php endforeach; ?>
       </tbody>

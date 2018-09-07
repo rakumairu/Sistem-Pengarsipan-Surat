@@ -35,6 +35,7 @@
         <th class="align-middle" scope="col">Perihal</th>
         <th class="align-middle" scope="col">Bidang</th>
         <th class="align-middle" scope="col">File</th>
+        <th class="align-middle" scope="col">Petugas</th>
       </tr>
     </thead>
     <?php $no = 1; ?>
@@ -90,6 +91,7 @@
 
             </div>
           </td> -->
+          <td><?php echo $surat['display_name']; ?></td>
         </tr>
       <?php endforeach; ?>
     </tbody>
