@@ -364,8 +364,8 @@ class Users extends CI_Controller{
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'demaspiraa@gmail.com';
-    $mail->Password = 'theaurions00';
+    $mail->Username = 'apublic202@gmail.com';
+    $mail->Password = 'thisispublic';
     $mail->SMTPSecure = 'ssl';
     $mail->Port = 465;
     $mail->SMTPAutoTLS = false;
