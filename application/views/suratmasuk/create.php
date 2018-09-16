@@ -104,6 +104,9 @@
     if($this->session->flashdata('upload_error')) : ?>
       <?php echo $this->session->flashdata('upload_error'); ?>
     <?php endif; ?>
+    <div class="text-muted">
+      <small>(jenis file yang diperbolehkan adalah jpg, png, doc, docx atau pdf)</small>
+    </div>
   </div>
   <input type="hidden" id="username" name="username" value="<?php echo $this->session->userdata('username');?>">
   <button type="submit" name="button" class="btn btn-primary">Simpan</button>

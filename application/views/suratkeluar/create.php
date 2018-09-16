@@ -6,6 +6,12 @@
   <div class="form-group">
     <label style="margin-bottom:0px">Nomor Surat</label>
     <p class="text-muted" style="margin-bottom:0px"><small>Nomor surat terakhir : <?php echo $nomor_surat_terakhir['nomor_surat']; ?></small></p>
+    <?php
+    if ($nomor_surat_terakhir['nomor_surat'] != '') {
+      $array = preg_split('#/#', $nomor_surat_terakhir['nomor_surat']);
+      $old_number = (int)$array[0];
+    }
+    ?>
     <input class="form-control <?php
     if (form_error('nomor_surat','',''))
     {
@@ -16,6 +22,13 @@
     if(isset($_POST['nomor_surat']))
     {
       echo $_POST['nomor_surat'];
+    } elseif($nomor_surat_terakhir['nomor_surat'] != '' && $old_number != 0) {
+      $num = $old_number + 1;
+      $output = (string)$num;
+      for ($i=1; $i < sizeof($array); $i++) {
+        $output = $output . '/' . $array[$i];
+      }
+      echo $output;
     }
     ?>">
     <?php echo form_error('nomor_surat','<p class="small text-danger" role="alert">','</p>'); ?>
@@ -72,6 +85,9 @@
     if($this->session->flashdata('upload_error')) : ?>
       <?php echo $this->session->flashdata('upload_error'); ?>
     <?php endif; ?>
+    <div class="text-muted">
+      <small>(jenis file yang diperbolehkan adalah jpg, png, doc, docx atau pdf)</small>
+    </div>
   </div>
   <input type="hidden" id="username" name="username" value="<?php echo $this->session->userdata('username');?>">
   <button type="submit" name="button" class="btn btn-primary">Simpan</button>

@@ -42,26 +42,28 @@
     <tbody>
       <?php foreach($surat_keluar as $surat): ?>
         <tr>
-          <td><?php echo $no; $no++; ?></td>
+          <td style="text-align:center;"><?php echo $no; $no++; ?></td>
           <?php $tanggalKeluar = new DateTime($surat['tanggal_data']); ?>
           <td><?php echo date_format($tanggalKeluar, 'd/M/Y'); ?></td>
           <td><?php echo $surat['nomor_surat']; ?></td>
           <td><?php echo $surat['kepada']; ?></td>
           <td><?php echo $surat['perihal']; ?></td>
           <td><?php echo $surat['bidang']; ?></td>
-          <td>
-            <?php if ($surat['dokumen'] == 'nodoc') {
-              echo 'Tidak tersedia';
-            } else {
-              echo '<a href='
-              .base_url().
-              "assets/upload/"
-              .$surat['dokumen'].
-              ' class="btn btn-primary" target="_blank">Unduh</a>';
-            } ?>
+          <td style="text-align:center;">
+            <div style="display:inline-block;">
+              <?php if ($surat['dokumen'] == 'nodoc') {
+                echo 'Tidak tersedia';
+              } else {
+                echo '<a href='
+                .base_url().
+                "assets/upload/"
+                .$surat['dokumen'].
+                ' class="btn btn-primary" target="_blank">Unduh</a>';
+              } ?>
+            </div>
           </td>
-          <td>
-            <div class="btn-group-vertical btn-group-sm" role="group">
+          <td style="text-align:center;">
+            <div class="btn-group-vertical btn-group-sm" role="group" style="display:inline-block;">
               <a href="<?php echo base_url(); ?>suratkeluar/<?php echo $surat['id']; ?>" class="btn btn-warning">Ubah</a>
 
               <?php // Modal delete ?>

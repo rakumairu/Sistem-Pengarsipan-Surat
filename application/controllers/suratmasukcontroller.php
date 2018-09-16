@@ -13,6 +13,12 @@ class SuratMasukController extends CI_Controller{
     if (!$this->session->userdata('logged_in') == TRUE) {
       redirect('login');
     }
+
+    // Checking if the user is 'admin' then redirect it to users
+    if ($this->session->userdata('level') == 3) {
+      $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
+      redirect('users');
+    }
   }
 
   /**
@@ -21,10 +27,6 @@ class SuratMasukController extends CI_Controller{
    */
   function index()
   {
-    if ($this->session->userdata('level') == 3) {
-      $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
-      redirect('users');
-    }
     // Data that will passed to the view
     $data['title'] = 'Surat Masuk';
     $data['icon'] = '<span class="fas fa-cloud-download-alt"></span>';
@@ -62,9 +64,6 @@ class SuratMasukController extends CI_Controller{
     if ($this->session->userdata('level') == 2) {
       $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
       redirect('suratmasuk');
-    } elseif ($this->session->userdata('level') == 3) {
-      $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
-      redirect('users');
     }
 
     // Data that will be pased to the view
@@ -95,7 +94,7 @@ class SuratMasukController extends CI_Controller{
     } else {
       // Configuration for the file upload
       $config['upload_path'] = './assets/upload';
-      $config['allowed_types'] = 'gif|jpg|png|doc|pdf|docx';
+      $config['allowed_types'] = 'jpg|png|doc|pdf|docx';
       $config['max_size'] = 2048000;
       $config['max_width'] = 4000;
       $config['max_height'] = 5000;
@@ -104,9 +103,8 @@ class SuratMasukController extends CI_Controller{
       $this->load->library('upload', $config);
 
       // Renaming the file name with nomor_surat-date.ext
-      // $name = preg_replace('/\s/', '', $this->input->post('nomor_surat'))."-".$this->input->post('tanggal_undangan').".".pathinfo($_FILES['dokumen']['name'], PATHINFO_EXTENSION);
-      // $_FILES['dokumen']['name'] = preg_replace('/\/', '_', $name);
-      $_FILES['dokumen']['name'] = preg_replace('/\s/', '', $this->input->post('nomor_surat'))."-".$this->input->post('tanggal_undangan').".".pathinfo($_FILES['dokumen']['name'], PATHINFO_EXTENSION);
+      $name = preg_replace('/\s/', '', $this->input->post('nomor_surat'))."-".$this->input->post('tanggal_undangan').".".pathinfo($_FILES['dokumen']['name'], PATHINFO_EXTENSION);
+      $_FILES['dokumen']['name'] = str_replace('/', '_', $name);
 
       /**
        * Checking wether or not the upload is running
@@ -160,9 +158,6 @@ class SuratMasukController extends CI_Controller{
     if ($this->session->userdata('level') == 2) {
       $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
       redirect('suratmasuk');
-    } elseif ($this->session->userdata('level') == 3) {
-      $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
-      redirect('users');
     }
 
     // Data that will be pased to the view
@@ -197,16 +192,18 @@ class SuratMasukController extends CI_Controller{
     } else {
       // Configuration for the file upload
       $config['upload_path'] = './assets/upload';
-      $config['allowed_types'] = 'gif|jpg|png|doc|pdf|docx';
+      $config['allowed_types'] = 'jpg|png|doc|pdf|docx';
       $config['max_size'] = 2048000;
       $config['max_width'] = 4000;
       $config['max_height'] = 5000;
+      $config['overwrite'] = TRUE;
 
       // Loading library for uploading using configuration of $config
       $this->load->library('upload', $config);
 
       // Renaming the file name with nomor_surat-date.ext
-      $_FILES['dokumen_new']['name'] = preg_replace('/\s/', '', $this->input->post('nomor_surat'))."-".$this->input->post('tanggal_undangan').".".pathinfo($_FILES['dokumen_new']['name'], PATHINFO_EXTENSION);
+      $name = preg_replace('/\s/', '', $this->input->post('nomor_surat'))."-".$this->input->post('tanggal_undangan').".".pathinfo($_FILES['dokumen_new']['name'], PATHINFO_EXTENSION);
+      $_FILES['dokumen_new']['name'] = str_replace('/', '_', $name);
 
       /**
        * Checking wether or not the upload is running
@@ -260,9 +257,6 @@ class SuratMasukController extends CI_Controller{
     if ($this->session->userdata('level') == 1) {
       $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
       redirect('suratmasuk');
-    } elseif ($this->session->userdata('level') == 3) {
-      $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
-      redirect('users');
     }
 
     // Do update on the status of suratmasuk
@@ -282,11 +276,6 @@ class SuratMasukController extends CI_Controller{
    */
   public function detaildisposisi($id)
   {
-    if ($this->session->userdata('level') == 3) {
-      $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
-      redirect('users');
-    }
-
     // Fetching the data
     $data['surat_masuk'] = $this->SuratMasukModel->get($id);
 
@@ -335,14 +324,16 @@ class SuratMasukController extends CI_Controller{
      * @var boolean
      */
     if ($this->SuratMasukModel->delete($id)) {
-      // Getting the current working directory
-      $cwd = getcwd();
-      // Determining the file path
-      $file_path = $cwd.'\\assets\\upload\\';
-      chdir($file_path);
-      // Deleting the file
-      unlink($file_name);
-      chdir($cwd);
+      if ($file_name != 'nodoc') {
+        // Getting the current working directory
+        $cwd = getcwd();
+        // Determining the file path
+        $file_path = $cwd.'\\assets\\upload\\';
+        chdir($file_path);
+        // Deleting the file
+        unlink($file_name);
+        chdir($cwd);
+      }
 
       $this->session->set_flashdata('success','Berhasil mengapus data surat masuk');
     } else {

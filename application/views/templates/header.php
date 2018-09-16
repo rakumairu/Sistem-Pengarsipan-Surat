@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Demaspira Aulia">
-    <meta name="linked-in:" content="https://www.linkedin.com/in/demaspira-aulia-0a943111b/">
     <meta name="github:" content="https://github.com/noobDedem">
 
     <title><?= $title; ?></title>

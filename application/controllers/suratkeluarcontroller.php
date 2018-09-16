@@ -14,15 +14,7 @@ class SuratKeluarController extends CI_Controller{
       redirect('login');
     }
 
-    // Checking if the user is 'KepDin' then redirect it to 'suratmasuk'
-    // if ($this->session->userdata('level') == 2) {
-    //   $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
-    //   redirect('suratmasuk');
-    // } elseif ($this->session->userdata('level') == 3) {
-    //   $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
-    //   redirect('users');
-    // }
-
+    // Checking if the user is 'admin' then redirect it to 'users'
     if ($this->session->userdata('level') == 3) {
       $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
       redirect('users');
@@ -64,9 +56,10 @@ class SuratKeluarController extends CI_Controller{
    */
   public function create()
   {
+    // Checking if the user is 'kepdin', then redirect it to suratkeluar
     if ($this->session->userdata('level') == 2) {
       $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
-      redirect('suratmasuk');
+      redirect('suratkeluar');
     }
     // Data that will be pased to the view
     $data['title'] = 'Tambah Surat Keluar';
@@ -95,7 +88,7 @@ class SuratKeluarController extends CI_Controller{
     } else {
       // Configuration for the file upload
       $config['upload_path'] = './assets/upload';
-      $config['allowed_types'] = 'gif|jpg|png|doc|pdf|docx';
+      $config['allowed_types'] = 'jpg|png|doc|pdf|docx';
       $config['max_size'] = 2048000;
       $config['max_width'] = 4000;
       $config['max_height'] = 5000;
@@ -104,7 +97,8 @@ class SuratKeluarController extends CI_Controller{
       $this->load->library('upload', $config);
 
       // Renaming the file name with nomor_surat.ext
-      $_FILES['dokumen']['name'] = preg_replace('/\s/', '', $this->input->post('nomor_surat')).".".pathinfo($_FILES['dokumen']['name'], PATHINFO_EXTENSION);
+      $name = preg_replace('/\s/', '', $this->input->post('nomor_surat')).".".pathinfo($_FILES['dokumen']['name'], PATHINFO_EXTENSION);
+      $_FILES['dokumen']['name'] = str_replace('/', '_', $name);
 
       /**
        * Checking wether or not the upload is running
@@ -155,9 +149,10 @@ class SuratKeluarController extends CI_Controller{
    */
   public function edit($id)
   {
+    // Checking if the user is 'kepdin', then redirect it to suratkeluar
     if ($this->session->userdata('level') == 2) {
       $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
-      redirect('suratmasuk');
+      redirect('suratkeluar');
     }
 
     // Data that will be pased to the view
@@ -190,16 +185,18 @@ class SuratKeluarController extends CI_Controller{
     } else {
       // Configuration for the file upload
       $config['upload_path'] = './assets/upload';
-      $config['allowed_types'] = 'gif|jpg|png|doc|pdf|docx';
+      $config['allowed_types'] = 'jpg|png|doc|pdf|docx';
       $config['max_size'] = 2048000;
       $config['max_width'] = 4000;
       $config['max_height'] = 5000;
+      $config['overwrite'] = TRUE;
 
       // Loading library for uploading using configuration of $config
       $this->load->library('upload', $config);
 
       // Renaming the file name with nomor_surat.ext
-      $_FILES['dokumen_new']['name'] = preg_replace('/\s/', '', $this->input->post('nomor_surat')).".".pathinfo($_FILES['dokumen_new']['name'], PATHINFO_EXTENSION);
+      $name = preg_replace('/\s/', '', $this->input->post('nomor_surat')).".".pathinfo($_FILES['dokumen_new']['name'], PATHINFO_EXTENSION);
+      $_FILES['dokumen_new']['name'] = str_replace('/', '_', $name);
 
       /**
        * Checking wether or not the upload is running
@@ -249,9 +246,10 @@ class SuratKeluarController extends CI_Controller{
    */
   public function delete($id)
   {
+    // Checking if the user is 'kepdin', then redirect it to suratkeluar
     if ($this->session->userdata('level') == 2) {
       $this->session->set_flashdata('failed','Anda tidak memiliki akses yang tepat');
-      redirect('suratmasuk');
+      redirect('suratkeluar');
     }
 
     /** @var String the name of the file that will be deleted */

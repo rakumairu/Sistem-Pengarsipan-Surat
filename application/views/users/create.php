@@ -82,20 +82,6 @@
       ?>>Kepala Dinas</option>
     </select>
     <?php echo form_error('level','<p class="small text-danger" role="alert">','</p>'); ?>
-    <!-- <input class="form-control
-    <?php
-    if (form_error('level','',''))
-    {
-      echo 'is-invalid';
-    }
-    ?>" type="text" name="level" placeholder="Jabatan"
-    value="<?php
-    if(isset($_POST['level']))
-    {
-      echo $_POST['level'];
-    }
-    ?>">
-    <?php echo form_error('level','<p class="small text-danger" role="alert">','</p>'); ?> -->
   </div>
   <div class="form-group">
     <label>Nama Tampilan</label>
@@ -122,7 +108,7 @@
     {
       echo 'is-invalid';
     }
-    ?>" type="text" name="email" placeholder="Email pengguna"
+    ?>" type="email" name="email" placeholder="Email pengguna"
     value="<?php
     if(isset($_POST['email']))
     {

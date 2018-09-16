@@ -29,7 +29,7 @@
   if (form_error('email','','')) {
     echo 'is-invalid';
   }
-  ?>" type="text" name="email" placeholder="Email yang digunakan pengguna"
+  ?>" type="email" name="email" placeholder="Email yang digunakan pengguna"
   value="<?php
   if(isset($_POST['email']))
   {

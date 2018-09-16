@@ -42,7 +42,7 @@ class Users_model extends CI_Model{
    */
   public function get($username = FALSE, $email = FALSE, $reset_token = FALSE)
   {
-    // FIXME: diubah jadi 1 parameter aja, tapi array masukannya
+    // IDEA: diubah jadi 1 parameter aja, tapi array masukannya
     // Fetch data from database to display in the edit view
     if ($username != FALSE) {
       return $this->db->get_where('users', array('username' => $username))->row_array();

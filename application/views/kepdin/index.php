@@ -27,7 +27,7 @@
     <tbody>
       <?php foreach($surat_masuk as $surat): ?>
         <tr>
-          <th scope="row"><?php echo $no;$no++; ?></th>
+          <th scope="row" style="text-align:center;"><?php echo $no;$no++; ?></th>
           <td><?php echo $surat['nomor_surat']; ?></td>
           <td><?php echo $surat['tanggal_undangan']; ?></td>
           <td><?php echo $surat['asal_surat']; ?></td>
@@ -42,51 +42,54 @@
               echo 'Ditolak';
             } ?>
           </td>
-          <td>
-            <?php if ($surat['detail_disposisi'] == '') {
-              echo 'Tidak ada detail';
-            } else {
-              echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDetail'.$surat['id'].'">Detail</button>';
-            } ?>
-
-            <?php // Modal Detail ?>
-            <div class="modal fade" id="modalDetail<?php echo $surat['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="modalDetailLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="modalDetailLabel">Detail Disposisi</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p><?php echo $surat['detail_disposisi']; ?></p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
-                  </div>
+          <td style="text-align:center;">
+            <div style="display:inline-block;">
+              <?php if ($surat['detail_disposisi'] == '') {
+                echo 'Tidak ada detail';
+              } else {
+                echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDetail'.$surat['id'].'">Detail</button>';
+              } ?>
+            </div>
+          </td>
+          <?php // Modal Detail ?>
+          <div class="modal fade" id="modalDetail<?php echo $surat['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="modalDetailLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalDetailLabel">Detail Disposisi</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p><?php echo $surat['detail_disposisi']; ?></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
                 </div>
               </div>
             </div>
-
-          </td>
-          <td>
-            <?php if ($surat['dokumen'] == 'nodoc') {
-              echo 'Tidak tersedia';
+          </div>
+          <td style="text-align:center;">
+            <div style="display:inline-block;">
+              <?php if ($surat['dokumen'] == 'nodoc') {
+                echo 'Tidak tersedia';
               } else {
-              echo '<a href="'
-              .base_url()
-              .'assets/upload/'
-              .$surat['dokumen']
-              .'" class="btn btn-primary" target="_blank">Unduh</a>';
+                echo '<a href="'
+                .base_url()
+                .'assets/upload/'
+                .$surat['dokumen']
+                .'" class="btn btn-primary" target="_blank">Unduh</a>';
               } ?>
+            </div>
             </td>
-            <td>
-              <div class="btn-group-vertical btn-group-sm" role="group">
+            <td style="text-align:center;">
+              <?php if($surat['status'] != 0): ?>
+              <div class="btn-group-vertical btn-group-sm" role="group" style="display:inline-block;">
                 <?php // Modal Setuju ?>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAccept<?php echo $surat['id']; ?>">Setujui</button>
 
-                <div class="modal fade" id="modalAccept<?php echo $surat['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="modalAcceptLabel" aria-hidden="true">
+                <div class="modal fade" id="modalAccept<?php echo $surat['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="modalAcceptLabel" aria-hidden="true" style="text-align:left;">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -108,6 +111,7 @@
                           <input type="hidden" name="tujuan" value="<?php echo $surat['tujuan']; ?>">
                           <input type="hidden" name="dokumen" value="<?php echo $surat['dokumen']; ?>">
                           <input type="hidden" name="tanggal_data" value="<?php echo $surat['tanggal_data']; ?>">
+                          <input type="hidden" name="username" value="<?php echo $surat['users_username']; ?>">
                           <input type="hidden" name="status" value="0">
                         </div>
                       </div>
@@ -123,7 +127,7 @@
                 <?php // Modal tolak ?>
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalReject<?php echo $surat['id']; ?>">Tolak</button>
 
-                <div class="modal fade" id="modalReject<?php echo $surat['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="modalRejectLabel" aria-hidden="true">
+                <div class="modal fade" id="modalReject<?php echo $surat['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="modalRejectLabel" aria-hidden="true" style="text-align:left;">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -145,6 +149,7 @@
                           <input type="hidden" name="tujuan" value="<?php echo $surat['tujuan']; ?>">
                           <input type="hidden" name="dokumen" value="<?php echo $surat['dokumen']; ?>">
                           <input type="hidden" name="tanggal_data" value="<?php echo $surat['tanggal_data']; ?>">
+                          <input type="hidden" name="username" value="<?php echo $surat['users_username']; ?>">
                           <input type="hidden" name="status" value="2">
                         </div>
                       </div>
@@ -157,8 +162,10 @@
                   </div>
                 </div>
               </div>
+            <?php else: echo "Sudah di disposisi"; ?>
+            <?php endif; ?>
             </td>
-            <td><?php echo $surat['display_name']; ?></td>
+            <td><?php echo $surat['users_username']; ?></td>
           </tr>
         <?php endforeach; ?>
       </tbody>

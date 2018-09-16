@@ -39,6 +39,7 @@ class SuratMasukModel extends CI_Model{
   /** @var DateTime the time and date when the data is created */
   var $tanggal_data;
 
+  /** @var String the username that last edited the data */
   var $users_username;
 
   public function __construct()
@@ -56,7 +57,7 @@ class SuratMasukModel extends CI_Model{
     if ($id == FALSE) {
       $this->db->select('*');
       $this->db->from('surat_masuk');
-      $this->db->join('users', 'users.username = surat_masuk.users_username');
+      $this->db->order_by('id', 'DESC');
       $query = $this->db->get();
       return $query->result_array();
     } else {
@@ -135,7 +136,11 @@ class SuratMasukModel extends CI_Model{
       $this->status = $this->input->post('status');
       $this->detail_disposisi = $this->input->post('detail_disposisi');
       $this->dokumen = $this->input->post('dokumen');
-      $this->users_username = $this->input->post('username');
+      if ($this->input->post('username') == '') {
+        $this->users_username = NULL;
+      } else {
+        $this->users_username = $this->input->post('username');
+      }
     }
 
     $this->db->where('id', $this->id);

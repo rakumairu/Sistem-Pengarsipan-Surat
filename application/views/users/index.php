@@ -1,8 +1,7 @@
-<h2 style="margin-bottom:0px">Daftar Pengguna</h2>
-<?php // FIXME: dibenerin layoutnya biar ada mninimalnya ?>
+<h2 style="margin-bottom:8px">Daftar Pengguna</h2>
 
 <div class="d-inline">
-  <a class="btn btn-primary" href="<?php base_url(); ?>users/create">Tambah Pengguna</a>
+  <a class="btn btn-primary" href="<?php base_url(); ?>users/create" style="margin-bottom:12px;">Tambah Pengguna</a>
 </div>
 
 <div id="table-data" style="overflow-x:scroll">
@@ -35,8 +34,6 @@
           <td><?php echo $user['email']; ?></td>
           <td>
             <div class="btn-group-vertical btn-group-sm" role="group">
-              <!-- <a href="<?php echo base_url(); ?>users/<?php echo $user['username']; ?>" class="btn btn-warning">Ubah</a> -->
-
               <?php // Modal delete ?>
               <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete<?php echo $user['username']; ?>">Hapus</button>
 

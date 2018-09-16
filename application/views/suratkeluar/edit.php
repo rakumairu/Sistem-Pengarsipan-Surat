@@ -85,6 +85,9 @@
     if($this->session->flashdata('upload_error')) : ?>
       <?php echo $this->session->flashdata('upload_error'); ?>
     <?php endif; ?>
+    <div class="text-muted">
+      <small>(jenis file yang diperbolehkan adalah jpg, png, doc, docx atau pdf)</small>
+    </div>
   </div>
   <input type="hidden" name="dokumen" value="<?php echo $surat_keluar['dokumen']; ?>">
   <input type="hidden" name="tanggal_data" value="<?php echo $surat_keluar['tanggal_data']; ?>">

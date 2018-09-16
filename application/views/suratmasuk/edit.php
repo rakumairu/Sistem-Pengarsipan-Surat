@@ -126,10 +126,13 @@
     if($this->session->flashdata('upload_error')) : ?>
       <?php echo $this->session->flashdata('upload_error'); ?>
     <?php endif; ?>
+    <div class="text-muted">
+      <small>(jenis file yang diperbolehkan adalah jpg, png, doc, docx atau pdf)</small>
+    </div>
   </div>
   <input type="hidden" name="dokumen" value="<?php echo $surat_masuk['dokumen']; ?>">
   <input type="hidden" name="tanggal_data" value="<?php echo $surat_masuk['tanggal_data']; ?>">
-  <input type="hidden" name="status" value="<?php echo $surat_masuk['status']; ?>">
+  <input type="hidden" name="status" value="1">
   <input type="hidden" name="detail_disposisi" value="<?php echo $surat_masuk['detail_disposisi']; ?>">
   <input type="hidden" id="username" name="username" value="<?php echo $this->session->userdata('username');?>">
   <button type="submit" name="button" class="btn btn-primary">Simpan</button>

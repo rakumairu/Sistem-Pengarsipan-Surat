@@ -27,6 +27,7 @@ class SuratKeluarModel extends CI_Model{
   /** @var DateTime the time and date when the data is created */
   var $tanggal_data;
 
+  /** @var String the username that last edited the data */
   var $users_username;
 
   public function __construct()
@@ -44,7 +45,7 @@ class SuratKeluarModel extends CI_Model{
     if ($id == FALSE) {
       $this->db->select('*');
       $this->db->from('surat_keluar');
-      $this->db->join('users', 'users.username = surat_keluar.users_username');
+      $this->db->order_by('id', 'DESC');
       $query = $this->db->get();
       return $query->result_array();
     } else {
