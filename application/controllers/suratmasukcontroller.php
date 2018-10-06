@@ -103,7 +103,9 @@ class SuratMasukController extends CI_Controller{
       $this->load->library('upload', $config);
 
       // Renaming the file name with nomor_surat-date.ext
-      $name = preg_replace('/\s/', '', $this->input->post('nomor_surat'))."-".$this->input->post('tanggal_undangan').".".pathinfo($_FILES['dokumen']['name'], PATHINFO_EXTENSION);
+      // $name = preg_replace('/\s/', '', $this->input->post('nomor_surat'))."-".$this->input->post('tanggal_undangan').".".pathinfo($_FILES['dokumen']['name'], PATHINFO_EXTENSION);
+      $name = preg_replace('/[^a-zA-Z0-9_]/', '_', $this->input->post('nomor_surat'))."-".$this->input->post('tanggal_undangan').".".pathinfo($_FILES['dokumen']['name'], PATHINFO_EXTENSION);
+      // $name_new = preg_replace('/\./', '_', $name);
       $_FILES['dokumen']['name'] = str_replace('/', '_', $name);
 
       /**
@@ -202,7 +204,9 @@ class SuratMasukController extends CI_Controller{
       $this->load->library('upload', $config);
 
       // Renaming the file name with nomor_surat-date.ext
-      $name = preg_replace('/\s/', '', $this->input->post('nomor_surat'))."-".$this->input->post('tanggal_undangan').".".pathinfo($_FILES['dokumen_new']['name'], PATHINFO_EXTENSION);
+      $name = preg_replace('/[^a-zA-Z0-9_]/', '_', $this->input->post('nomor_surat'))."-".$this->input->post('tanggal_undangan').".".pathinfo($_FILES['dokumen_new']['name'], PATHINFO_EXTENSION);
+      // $name = preg_replace('/[^a-zA-Z0-9_]/', '_', $this->input->post('nomor_surat'))."-".$this->input->post('tanggal_undangan').".".pathinfo($_FILES['dokumen']['name'], PATHINFO_EXTENSION);
+      // $name_new = preg_replace('/\./', '_', $name);
       $_FILES['dokumen_new']['name'] = str_replace('/', '_', $name);
 
       /**
