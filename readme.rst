@@ -1,18 +1,26 @@
-###################
-Initial Setup
-###################
-Ubah konfigurasi :
-C:\\xampp\apache\\conf\\extra\\httpd-vhost.conf
-<VirtualHost *:80>
-	DocumentRoot "D:htdocs/surat"
-	ServerName surat.localhost
-	<Directory "D:/htdocs/surat">
-		DirectoryIndex index.php
-		AllowOverride All
-		Order allow,deny
-		Allow from all
-	</Directory>
-</VirtualHost>
+# Sistem Pengarsipan Surat (SPS)
 
-C:\\Windows\\System32\\drivers\\etc
-127.0.0.1	surat.localhost
+An application as my project to finish my PKL (Praktik Kerja Lapangan) subject in college
+The app is deployed on Dinas Pendidikan Kabupaten Semarang
+
+## Prerequisites
+
+* Install [XAMPP](https://www.apachefriends.org/download.html)
+** I'm using XAMPP 7.3 in the development
+
+## Database
+
+SQL Database [Download Here](https://drive.google.com/open?id=13bzYnLZ6W1JjSj8G5H_TeXQrpUv_Zm88)
+Database Name : pkl
+
+## User Account in the Database
+
+* Petugas
+** username : petugas
+** password : petugas
+* Kepala Dinas
+** username : kepdin
+** password : kepdin
+* Admin
+** username : admin
+** password : admin
