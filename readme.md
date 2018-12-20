@@ -6,7 +6,7 @@ The app is deployed on Dinas Pendidikan Kabupaten Semarang
 ## Prerequisites
 
 * Install [XAMPP](https://www.apachefriends.org/download.html)
-** I'm using XAMPP 7.3 in the development
+*I'm using XAMPP 7.3 in the development
 
 ## Database
 
@@ -15,12 +15,6 @@ Database Name : pkl
 
 ## User Account in the Database
 
-* Petugas
-** username : petugas
-** password : petugas
-* Kepala Dinas
-** username : kepdin
-** password : kepdin
-* Admin
-** username : admin
-** password : admin
+* Petugas (username : petugas) (password : petugas)
+* Kepala Dinas (username : kepdin) (password : kepdin)
+* Admin (username : admin) (password : admin)
