@@ -1,6 +1,6 @@
 # Sistem Pengarsipan Surat (SPS)
 
-An application as my project to finish my PKL (Praktik Kerja Lapangan) subject in college
+An application as my project to finish my PKL (Praktik Kerja Lapangan) subject in college  
 The app is deployed on Dinas Pendidikan Kabupaten Semarang
 
 ## Prerequisites
