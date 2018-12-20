@@ -5,12 +5,12 @@ The app is deployed on Dinas Pendidikan Kabupaten Semarang
 
 ## Prerequisites
 
-* Install [XAMPP](https://www.apachefriends.org/download.html)
+* Install [XAMPP](https://www.apachefriends.org/download.html)  
 *I'm using XAMPP 7.3 in the development
 
 ## Database
 
-SQL Database [Download Here](https://drive.google.com/open?id=13bzYnLZ6W1JjSj8G5H_TeXQrpUv_Zm88)
+SQL Database [Download Here](https://drive.google.com/open?id=13bzYnLZ6W1JjSj8G5H_TeXQrpUv_Zm88)  
 Database Name : pkl
 
 ## User Account in the Database
